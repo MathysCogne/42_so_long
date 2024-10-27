@@ -1,0 +1,33 @@
+# Compiled object files
+*.o
+*.d
+obj/
+*.obj
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Libraries
+*.a
+*.so
+# Backup files
+*~
+*.bak
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+
+*.log
+
+# Customize Executable Makefile
+so_long
+minilibx-linux/
