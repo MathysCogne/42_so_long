@@ -52,7 +52,7 @@ OBJDIR = obj
 INCDIR = include
 
 # Source Files
-SRC = map/map_parsing.c map/map_verif.c map/map_valid_path.c utils/utlis.c so_long.c main.c 
+SRC = map/map_parsing.c map/map_verif.c map/map_valid_path.c mlx/mlx_utlis.c utils/utlis.c so_long.c main.c 
 OBJ = $(SRC:.c=.o)
 SRC := $(addprefix $(SRCDIR)/, $(SRC))
 OBJ := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(OBJ))
