@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 03:35:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/27 04:57:03 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/28 06:08:55 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,47 +37,38 @@ short	map_rectangular(t_map *map)
 	return (1);
 }
 
-short	map_closed_wall(char *map_txt, t_map *map)
+short	map_closed_wall(t_map *map)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < map->col)
 	{
-		if (map_txt[i] != WALL)
+		if (map->txt[i] != WALL)
 			return (0);
-		if (map_txt[(map->col * (map->row - 1)) + i] != WALL)
+		if (map->txt[(map->col * (map->row - 1)) + i] != WALL)
 			return (0);
 		i++;
 	}
 	i = 0;
 	while (i < map->row)
 	{
-		if (map_txt[i * map->col] != WALL)
+		if (map->txt[i * map->col] != WALL)
 			return (0);
-		if (map_txt[i * map->col + (map->col - 1)] != WALL)
+		if (map->txt[i * map->col + (map->col - 1)] != WALL)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-short	map_verif(char *map_txt, t_map *map)
+short	map_verif(t_map *map)
 {
 	if (!map_contain_exit_start_item(map))
-	{
-		ft_printf("ON SORT LAdddddddddddd");
 		return (0);
-	}
 	if (!map_rectangular(map))
-	{
-		ft_printf("ON SORT LAdddd");
 		return (0);
-	}
-	if (!map_closed_wall(map_txt, map))
-	{
-		ft_printf("ON SORT LA");
+	if (!map_closed_wall(map))
 		return (0);
-	}
 	return (1);
 }

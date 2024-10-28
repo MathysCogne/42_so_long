@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 01:34:15 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/27 02:37:53 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/28 06:11:40 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_put_exrror(char *msg_error)
 	ft_putstr_fd("Error.\n", 0);
 	ft_putstr_fd(msg_error, 0);
 	ft_putstr_fd("\n", 0);
-	/* TODO ADD SORTIE PGRM PROPREMENT */
+	// TODO ADD SORTIE PGRM PROPREMENT
 	exit(EXIT_FAILURE);
 }
 

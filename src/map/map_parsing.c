@@ -6,35 +6,11 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 02:12:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/27 04:52:31 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/28 06:11:04 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-t_map	*map_init_struct(void)
-{
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
-	map->col = 0;
-	map->row = 0;
-	map->pos_start = NULL;
-	map->pos_exit = NULL;
-	map->pos_void = NULL;
-	map->pos_wall = NULL;
-	map->pos_item = NULL;
-	map->pos_monster = NULL;
-	map->count_start = 0;
-	map->count_exit = 0;
-	map->count_void = 0;
-	map->count_wall = 0;
-	map->count_item = 0;
-	map->count_monster = 0;
-	return (map);
-}
 
 short	map_validate_ext(char *path)
 {
@@ -61,7 +37,7 @@ short	map_add_pos(size_t **item, size_t *count, size_t pos)
 	return (1);
 }
 
-char	*map_revove_n(char *map_txt, t_map *map)
+char	*map_revove_n(t_map *map)
 {
 	size_t	i;
 	size_t	j;
@@ -74,11 +50,11 @@ char	*map_revove_n(char *map_txt, t_map *map)
 		return (0);
 	i = 0;
 	j = 0;
-	while (map_txt[i])
+	while (map->txt[i])
 	{
-		if (map_txt[i] != '\n')
+		if (map->txt[i] != '\n')
 		{
-			tmp[j] = map_txt[i];
+			tmp[j] = map->txt[i];
 			j++;
 		}
 		i++;
@@ -87,45 +63,45 @@ char	*map_revove_n(char *map_txt, t_map *map)
 	return (tmp);
 }
 
-void	map_count_col_row(char *map_txt, t_map *map)
+void	map_count_col_row(t_map *map)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while (map_txt[i] && map_txt[i] != '\n')
+	while (map->txt[i] && map->txt[i] != '\n')
 	{
 		map->col++;
 		i++;
 	}
 	i = 0;
-	while (map_txt[i])
+	while (map->txt[i])
 	{
-		if (map_txt[i] == '\n')
+		if (map->txt[i] == '\n')
 			map->row++;
 		i++;
 	}
-	if (map_txt[i] != '\n')
+	if (map->txt[i] != '\n')
 		map->row++;
 }
 
-short	map_parse(char *map_txt, t_map *map)
+short	map_parse(t_map *map)
 {
 	size_t	i;
 
 	i = 0;
-	while (map_txt[i])
+	while (map->txt[i])
 	{
-		if (map_txt[i] == START && !map_add_pos(&map->pos_start, &map->count_start, i))
+		if (map->txt[i] == START && !map_add_pos(&map->pos_player, &map->count_start, i))
 			return (0);
-		if (map_txt[i] == EXIT && !map_add_pos(&map->pos_exit, &map->count_exit, i))
+		if (map->txt[i] == EXIT && !map_add_pos(&map->pos_exit, &map->count_exit, i))
 			return (0);
-		if (map_txt[i] == VOID && !map_add_pos(&map->pos_void, &map->count_void, i))
+		if (map->txt[i] == VOID && !map_add_pos(&map->pos_void, &map->count_void, i))
 			return (0);
-		if (map_txt[i] == WALL && !map_add_pos(&map->pos_wall, &map->count_wall, i))
+		if (map->txt[i] == WALL && !map_add_pos(&map->pos_wall, &map->count_wall, i))
 			return (0);
-		if (map_txt[i] == ITEM && !map_add_pos(&map->pos_item, &map->count_item, i))
+		if (map->txt[i] == ITEM && !map_add_pos(&map->pos_item, &map->count_item, i))
 			return (0);
-		if (map_txt[i] == MONSTER && !map_add_pos(&map->pos_monster, &map->count_monster, i))
+		if (map->txt[i] == MONSTER && !map_add_pos(&map->pos_monster, &map->count_monster, i))
 			return (0);
 		i++;
 	}
@@ -156,68 +132,55 @@ char	*map_read(char *path)
 	return (map_txt);
 }
 
-void print_map(t_map *map)
+void	print_map(t_map *map)
 {
-    ft_printf("Columns: %d\n", map->col);
-    ft_printf("Rows: %d\n", map->row);
-
-    // Affichage des positions
-    ft_printf("Start: ");
-    for (size_t i = 0; i < map->count_start; i++)
-        ft_printf("%d ", map->pos_start[i]);
-    ft_printf("\n");
-
-    ft_printf("Exit: ");
-    for (size_t i = 0; i < map->count_exit; i++)
-        ft_printf("%d ", map->pos_exit[i]);
-    ft_printf("\n");
-
-    ft_printf("Void: ");
-    for (size_t i = 0; i < map->count_void; i++)
-        ft_printf("%d ", map->pos_void[i]);
-    ft_printf("\n");
-
-    ft_printf("Wall: ");
-    for (size_t i = 0; i < map->count_wall; i++)
-        ft_printf("%d ", map->pos_wall[i]);
-    ft_printf("\n");
-
-    ft_printf("Item: ");
-    for (size_t i = 0; i < map->count_item; i++)
-        ft_printf("%d ", map->pos_item[i]);
-    ft_printf("\n");
-
-    ft_printf("Monster: ");
-    for (size_t i = 0; i < map->count_monster; i++)
-        ft_printf("%d ", map->pos_monster[i]);
-    ft_printf("\n");
+	ft_printf("Columns: %d\n", map->col);
+	ft_printf("Rows: %d\n", map->row);
+	ft_printf("Start: ");
+	for (size_t i = 0; i < map->count_start; i++)
+		ft_printf("%d ", map->pos_player[i]);
+	ft_printf("\n");
+	ft_printf("Exit: ");
+	for (size_t i = 0; i < map->count_exit; i++)
+		ft_printf("%d ", map->pos_exit[i]);
+	ft_printf("\n");
+	ft_printf("Void: ");
+	for (size_t i = 0; i < map->count_void; i++)
+		ft_printf("%d ", map->pos_void[i]);
+	ft_printf("\n");
+	ft_printf("Wall: ");
+	for (size_t i = 0; i < map->count_wall; i++)
+		ft_printf("%d ", map->pos_wall[i]);
+	ft_printf("\n");
+	ft_printf("Item: ");
+	for (size_t i = 0; i < map->count_item; i++)
+		ft_printf("%d ", map->pos_item[i]);
+	ft_printf("\n");
+	ft_printf("Monster: ");
+	for (size_t i = 0; i < map->count_monster; i++)
+		ft_printf("%d ", map->pos_monster[i]);
+	ft_printf("\n");
 }
 
 
 short	map_init(char *path, t_map **map)
 {
-	char	*map_txt;
-
-	map_txt = map_read(path);
-	if (!map_txt)
-		return (0);
-
 	*map = map_init_struct();
+	(*map)->txt = map_read(path);
+	if (!(*map)->txt)
+		return (0);
 	if (!map)
 		return (0);
-	map_count_col_row(map_txt, *map);
-	map_txt = map_revove_n(map_txt, *map);
-	if (!map_parse(map_txt, *map))
+	map_count_col_row(*map);
+	(*map)->txt = map_revove_n(*map);
+
+	if (!map_parse(*map))
 		return (0);
-
 	/* DEBUG */
-	ft_printf("%s\n\n", map_txt);
+	ft_printf("%s\n\n", (*map)->txt);
 	print_map(*map);
-	/******* */
-
-	if (!map_verif(map_txt, *map))
+	/********/
+	if (!map_verif(*map))
 		return(0);
-
-	free(map_txt);
 	return (1);
 }

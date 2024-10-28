@@ -6,46 +6,83 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:24:54 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/27 18:54:21 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/28 06:08:48 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_mlx	*ft_mlx_init_struct(void)
+short	ft_mlx_put_image(t_map *map, t_mlx *mlx, t_img *img) // RENAME LOAD MAP
 {
-	t_mlx	*mlx_data;
+	size_t	pos;
+	size_t	row;
+	size_t	col;
 
-	mlx_data = malloc(sizeof(t_map));
-	if (!mlx_data)
-		return (NULL);
-	mlx_data->mlx_id = NULL;
-	mlx_data->window = NULL;
-	return (mlx_data);
-}
-t_texture	*ft_texture_init_struct(void)
-{
-	t_texture	*texture_data;
-
-	texture_data = malloc(sizeof(t_texture));
-	if (!texture_data)
-		return (NULL);
-	texture_data->img_width = 0;
-	texture_data->img_height = 0;
-	texture_data->player_img = NULL;
-	texture_data->wall_img = NULL;
-	return (texture_data);
-}
-
-short	ft_mlx_new_win(t_mlx *data)
-{
-	data->mlx_id = mlx_init();
-	data->window = mlx_new_window(data->mlx_id, WIN_WIDTH, WIN_HEIGHT, "So Long");
+	pos = 0;
+	while (pos < (map->col * map->row))
+	{
+		col = IMG_WIDTH * (pos % map->col);
+		row = IMG_WIDTH * (pos / map->col);
+		if (map->txt[pos] == WALL)
+			mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->wall, col, row);
+		if (map->txt[pos] == ITEM)
+			mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->item, col, row);
+		if (map->txt[pos] == VOID)
+			mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->i_void, col, row);
+		if (map->txt[pos] == START)
+			mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->player, col, row);
+		if (map->txt[pos] == EXIT)
+			mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->exit, col, row);
+		pos++;
+	}
 	return (1);
 }
 
-short	ft_mlx_start(t_mlx **data)
+short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
 {
-	ft_mlx_new_win(*data);
+	img->player = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_PLAYER, &img->width, &img->height);
+	img->wall = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_WALL, &img->width, &img->height);
+	img->item = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_ITEM, &img->width, &img->height);
+	img->i_void = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_VOID, &img->width, &img->height);
+	img->exit = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_EXIT, &img->width, &img->height);
+	if (!img->player || !img->wall || !img->i_void || !img->exit)
+		return (0);
+	mlx->img = img;
+	return (1);
+}
+
+short	ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img)
+{
+	ft_mlx_put_image(map, mlx, img);
+	ft_mlx_setup_hook(mlx);
+	mlx_loop(mlx->mlx_id);
+	return (1);
+}
+
+short	ft_mlx_new_win(t_mlx *mlx, size_t width, size_t height)
+{
+	mlx->mlx_id = mlx_init();
+	mlx->window = mlx_new_window(mlx->mlx_id, width, height, "So Long");
+	return (1);
+}
+
+short	ft_mlx_start(t_map **map, t_mlx **mlx, t_img **img)
+{
+	*mlx = ft_mlx_init_struct();
+	(*mlx)->img = texture_init_struct();
+	(*mlx)->map = *map;
+	if (!(*mlx) || !(*img))
+		return (0);
+	if (!ft_mlx_new_win(*mlx, ((*map)->col * IMG_WIDTH), ((*map)->row * IMG_WIDTH)))
+		return (0);
+	if (!ft_mlx_load_texture(*mlx, *img))
+		return (0);
+	if (!ft_mlx_render(*map, *mlx, *img))
+		return (0);
 	return (1);
 }
