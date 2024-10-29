@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 23:21:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 01:17:36 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:25:30 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_img	*texture_init_struct(void)
 		return (NULL);
 	img->width = 0;
 	img->height = 0;
-	img->player = NULL;
+	*img->player = NULL;
 	img->player_start = NULL;
 	img->player_dead = NULL;
 	img->item = NULL;
@@ -75,6 +75,6 @@ t_img	*texture_init_struct(void)
 	img->exit_open = NULL;
 	*img->flat = NULL;
 	*img->monster = NULL;
-	img->monster_frame_index = 0;
+	*img->ui_health = NULL;
 	return (img);
 }

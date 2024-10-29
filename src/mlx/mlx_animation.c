@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:21:05 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 01:19:02 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:32:40 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,40 @@
 
 void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map)
 {
+	static size_t	i_frame;
 	size_t	i;
 	size_t	col;
 	size_t	row;
 	size_t	pos;
 
+	if (!i_frame)
+		i_frame = 0;
 	i = 0;
 	while (i < map->count_monster)
 	{
 		pos = map->pos_monster[i];
 		col = IMG_WIDTH * (pos % map->col);
 		row = IMG_WIDTH * (pos / map->col);
-		mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->monster[img->monster_frame_index], col, row);
+		mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->monster[i_frame], col, row);
 		i++;
 	}
-	img->monster_frame_index = (img->monster_frame_index + 1) % FRAME_COUNT;
+	i_frame = (i_frame + 1) % FRAME_COUNT_MONSTER;
+}
+
+void	render_animation_player(t_mlx *mlx, t_img *img, t_map *map)
+{
+	static size_t	i_frame;
+	size_t			pos;
+	size_t			col;
+	size_t			row;
+
+	if (!i_frame)
+		i_frame = 0;
+	pos = *map->pos_player;
+	col = IMG_WIDTH * (pos % map->col);
+	row = IMG_WIDTH * (pos / map->col);
+	mlx_put_image_to_window(mlx->mlx_id, mlx->window, img->player[i_frame], col, row);
+	i_frame = (i_frame + 1) % FRAME_COUNT_PLAYER;
 }
 
 int	main_loop_animation(t_mlx *mlx)
@@ -40,6 +59,9 @@ int	main_loop_animation(t_mlx *mlx)
 	if (frame_count > ANIM_SPEED)
 	{
 		render_animation_monsters(mlx, mlx->img, mlx->map);
+		render_animation_player(mlx, mlx->img, mlx->map);
+		if (mlx->map->health_player <= 0)
+			anim_game_over(mlx);
 		frame_count = 0;
 	}
 	frame_count++;

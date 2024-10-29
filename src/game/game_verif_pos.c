@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:34:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 03:05:47 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/29 23:24:33 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,19 @@ short	is_door_open_pos(t_map *map, size_t pos)
 {
 	if (pos == map->pos_exit[0] && map->collect_item == map->count_item)
 		return (1);
+	return (0);
+}
+
+short	is_monster_pos(t_map *map, size_t pos)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < map->count_monster)
+	{
+		if (pos == map->pos_monster[i])
+			return (1);
+		i++;
+	}
 	return (0);
 }

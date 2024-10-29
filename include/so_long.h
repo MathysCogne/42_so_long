@@ -10,6 +10,7 @@
 # include <fcntl.h>
 
 /*************** MACRO ***************/
+/*** MAP ***/
 # define START		'P'
 # define EXIT		'E'
 # define VOID		'0'
@@ -17,6 +18,7 @@
 # define ITEM		'C'
 # define MONSTER	'M'
 
+/*** KEY ***/
 # define KEY_ESC		65307
 # define KEY_W			119
 # define KEY_S			115
@@ -27,10 +29,18 @@
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
 
-/*** IMG ***/
+/*** IMG TEXTURES ***/
 # define IMG_PLAYER		"./sprites/player/player_flat.xpm"
 # define IMG_P_DEAD		"./sprites/player/player_dead.xpm"
 # define IMG_P_START	"./sprites/player/player_start.xpm"
+
+# define IMG_PLAYER_0	"./sprites/player/frame_anim/player_0.xpm"
+# define IMG_PLAYER_1	"./sprites/player/frame_anim/player_1.xpm"
+# define IMG_PLAYER_2	"./sprites/player/frame_anim/player_2.xpm"
+# define IMG_PLAYER_3	"./sprites/player/frame_anim/player_3.xpm"
+# define IMG_PLAYER_4	"./sprites/player/frame_anim/player_4.xpm"
+# define IMG_PLAYER_5	"./sprites/player/frame_anim/player_5.xpm"
+# define IMG_PLAYER_6	"./sprites/player/frame_anim/player_6.xpm"
 
 # define IMG_MONSTER_0	"./sprites/monsters/monster_0.xpm"
 # define IMG_MONSTER_1	"./sprites/monsters/monster_1.xpm"
@@ -51,13 +61,19 @@
 # define IMG_FLAT_3		"./sprites/flat/flat_3.xpm"
 # define IMG_FLAT_4		"./sprites/flat/flat_4.xpm"
 
-# define IMG_WIDTH		49
+# define IMG_UI_HEALTH_0	"./sprites/ui_health/health_0.xpm"
+# define IMG_UI_HEALTH_1	"./sprites/ui_health/health_1.xpm"
+# define IMG_UI_HEALTH_2	"./sprites/ui_health/health_2.xpm"
+# define IMG_UI_HEALTH_3	"./sprites/ui_health/health_3.xpm"
 
-# define ANIM_SPEED		6000
-# define FRAME_COUNT	5
+/*** IMG PARAM ***/
+# define IMG_WIDTH				49
+# define IMG_WIDTH_HEALTH		98
 
-# define WIN_WIDTH		1950
-# define WIN_HEIGHT		975
+# define ANIM_SPEED				6000
+
+# define FRAME_COUNT_MONSTER	5
+# define FRAME_COUNT_PLAYER		7
 
 /************** SO_LONG **************/
 short	so_long(char *path);
@@ -96,7 +112,7 @@ typedef struct s_img
 	int		width;
 	int		height;
 
-	void	*player;
+	void	*player[FRAME_COUNT_PLAYER];
 	void	*player_start;
 	void	*player_dead;
 
@@ -107,8 +123,9 @@ typedef struct s_img
 	void	*exit_open;
 
 	void	*flat[5];
-	void	*monster[5];
-	size_t	monster_frame_index;
+	void	*monster[FRAME_COUNT_MONSTER];
+
+	void	*ui_health[4];
 }			t_img;
 
 /**************** MLX ****************/
@@ -147,6 +164,12 @@ short	move_monsters_ia(t_mlx *mlx, t_map *map);
 short	is_wall_pos_or_door_close(t_map *map, size_t col, size_t row);
 short	is_item_pos(t_map *map, size_t pos);
 short	is_door_open_pos(t_map *map, size_t pos);
+short	is_monster_pos(t_map *map, size_t pos);
+short	draw_health(t_mlx *mlx, t_map *map, t_img *img);
+short	attack_to_player(t_mlx *mlx, t_map *map);
+void	game_over(t_mlx *mlx);
+void	game_win(t_mlx *mlx);
+void	anim_game_over(t_mlx *mlx);
 
 /*************** UTILS ***************/
 void	ft_put_exrror(char *msg_error);

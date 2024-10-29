@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 04:17:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 01:53:46 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/29 22:38:15 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_mlx_close_window(t_mlx *mlx)
 
 short	ft_mlx_setup_hook(t_mlx *mlx)
 {
+	draw_health(mlx, mlx->map, mlx->img);
 	mlx_loop_hook(mlx->mlx_id, main_loop_animation, mlx);
 	mlx_key_hook(mlx->window, ft_mlx_keypress, mlx);
 	mlx_hook(mlx->window, 17, 0, ft_mlx_close_window, mlx);
