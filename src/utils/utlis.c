@@ -6,11 +6,49 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 01:34:15 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 06:11:40 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/29 03:28:52 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
+}
+
+size_t	generate_random_nb(size_t index)
+{
+	size_t	seed;
+
+	seed = index;
+	seed = seed * 1103515245 + 12345;
+	return ((seed / 655365) % 32768);
+}
+
+size_t	random_index_0_5(size_t index)
+{
+	size_t	random_nb;
+	index *= 1103515245;
+	index /= 4;
+	random_nb = generate_random_nb(index) % 100;
+	if (random_nb < 1)
+		return (2);
+	if (random_nb < 2)
+		return (3);
+	if (random_nb < 84)
+		return (0);
+	if (random_nb < 90)
+		return (1);
+	if (random_nb < 97)
+		return (2);
+	if (random_nb < 99)
+		return (3);
+	else
+		return (4);
+}
 
 void	ft_put_exrror(char *msg_error)
 {

@@ -27,18 +27,34 @@
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
 
-# define IMG_PLAYER		"./sprites/player_0.xpm"
-# define IMG_MONSTER	"./sprites/monster_0.xpm"
-# define IMG_ITEM		"./sprites/item_0.xpm"
-# define IMG_EXIT		"./sprites/end_0.xpm"
+/*** IMG ***/
+# define IMG_PLAYER		"./sprites/player/player_flat.xpm"
+# define IMG_P_DEAD		"./sprites/player/player_dead.xpm"
+# define IMG_P_START	"./sprites/player/player_start.xpm"
 
-# define IMG_VOID  		"./sprites/flat_0.xpm"
-# define IMG_VOID_1		"./sprites/flat_1.xpm"
-# define IMG_VOID_2		"./sprites/flat_2.xpm"
+# define IMG_MONSTER_0	"./sprites/monsters/monster_0.xpm"
+# define IMG_MONSTER_1	"./sprites/monsters/monster_1.xpm"
+# define IMG_MONSTER_2	"./sprites/monsters/monster_2.xpm"
+# define IMG_MONSTER_3	"./sprites/monsters/monster_3.xpm"
+# define IMG_MONSTER_4	"./sprites/monsters/monster_4.xpm"
+
+# define IMG_ITEM		"./sprites/item.xpm"
 
 # define IMG_WALL		"./sprites/wall.xpm"
 
-# define IMG_WIDTH		50
+# define IMG_EXIT		"./sprites/exit/end_close.xpm"
+# define IMG_EXIT_OPEN	"./sprites/exit/end_open.xpm"
+
+# define IMG_FLAT		"./sprites/flat/flat_0.xpm"
+# define IMG_FLAT_1		"./sprites/flat/flat_1.xpm"
+# define IMG_FLAT_2		"./sprites/flat/flat_2.xpm"
+# define IMG_FLAT_3		"./sprites/flat/flat_3.xpm"
+# define IMG_FLAT_4		"./sprites/flat/flat_4.xpm"
+
+# define IMG_WIDTH		49
+
+# define ANIM_SPEED		6000
+# define FRAME_COUNT	5
 
 # define WIN_WIDTH		1950
 # define WIN_HEIGHT		975
@@ -52,6 +68,9 @@ typedef struct	s_map
 	char		*txt;
 	size_t		col;
 	size_t		row;
+	size_t		count_move;
+	size_t		collect_item;
+	size_t		health_player;
 	size_t		*pos_player;
 	size_t		*pos_exit;
 	size_t		*pos_void;
@@ -76,12 +95,20 @@ typedef struct s_img
 {
 	int		width;
 	int		height;
+
 	void	*player;
-	void	*start;
-	void	*exit;
-	void	*i_void;
-	void	*wall;
+	void	*player_start;
+	void	*player_dead;
+
 	void	*item;
+	void	*wall;
+
+	void	*exit_close;
+	void	*exit_open;
+
+	void	*flat[5];
+	void	*monster[5];
+	size_t	monster_frame_index;
 }			t_img;
 
 /**************** MLX ****************/
@@ -98,13 +125,34 @@ short	ft_mlx_setup_hook(t_mlx *mlx);
 int		ft_mlx_close_window(t_mlx *mlx);
 int		ft_mlx_keypress(int	keycode, t_mlx *mlx);
 short	ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img);
+short	ft_mlx_load_texture(t_mlx *mlx, t_img *img);
+short	ft_mlx_put_image_to_window(t_mlx *mlx, void *ptr_img, size_t pos);
+int		main_loop_animation(t_mlx *mlx);
+void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map);
+
+
+short	map_init_render(t_map *map, t_mlx *mlx, t_img *img); // TOTO MOVE TO MAP
+short	map_randomize_patern_void(t_mlx *mlx, t_img *img, size_t col, size_t row);
 
 /*************** GAME ****************/
+typedef struct	s_monster {
+	size_t	id;
+	size_t	pos;
+	size_t	col;
+	size_t	row;
+} 		t_monster;
+
 short	move_player(t_mlx *mlx, int to_row, int to_col);
+short	move_monsters_ia(t_mlx *mlx, t_map *map);
+short	is_wall_pos_or_door_close(t_map *map, size_t col, size_t row);
+short	is_item_pos(t_map *map, size_t pos);
+short	is_door_open_pos(t_map *map, size_t pos);
 
 /*************** UTILS ***************/
 void	ft_put_exrror(char *msg_error);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+size_t	random_index_0_5(size_t index);
+int		ft_abs(int nb);
 
 /************ UTILS STRUCT ***********/
 t_map	*map_init_struct(void);

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 02:12:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 06:11:04 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:13:55 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,37 +132,6 @@ char	*map_read(char *path)
 	return (map_txt);
 }
 
-void	print_map(t_map *map)
-{
-	ft_printf("Columns: %d\n", map->col);
-	ft_printf("Rows: %d\n", map->row);
-	ft_printf("Start: ");
-	for (size_t i = 0; i < map->count_start; i++)
-		ft_printf("%d ", map->pos_player[i]);
-	ft_printf("\n");
-	ft_printf("Exit: ");
-	for (size_t i = 0; i < map->count_exit; i++)
-		ft_printf("%d ", map->pos_exit[i]);
-	ft_printf("\n");
-	ft_printf("Void: ");
-	for (size_t i = 0; i < map->count_void; i++)
-		ft_printf("%d ", map->pos_void[i]);
-	ft_printf("\n");
-	ft_printf("Wall: ");
-	for (size_t i = 0; i < map->count_wall; i++)
-		ft_printf("%d ", map->pos_wall[i]);
-	ft_printf("\n");
-	ft_printf("Item: ");
-	for (size_t i = 0; i < map->count_item; i++)
-		ft_printf("%d ", map->pos_item[i]);
-	ft_printf("\n");
-	ft_printf("Monster: ");
-	for (size_t i = 0; i < map->count_monster; i++)
-		ft_printf("%d ", map->pos_monster[i]);
-	ft_printf("\n");
-}
-
-
 short	map_init(char *path, t_map **map)
 {
 	*map = map_init_struct();
@@ -176,10 +145,7 @@ short	map_init(char *path, t_map **map)
 
 	if (!map_parse(*map))
 		return (0);
-	/* DEBUG */
-	ft_printf("%s\n\n", (*map)->txt);
-	print_map(*map);
-	/********/
+
 	if (!map_verif(*map))
 		return(0);
 	return (1);

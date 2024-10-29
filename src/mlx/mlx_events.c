@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 04:17:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 06:08:06 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:53:46 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_mlx_keypress(int keycode, t_mlx *mlx)
 {
-	ft_printf("[EVENT] Keycode: %i\n", keycode);
 	if (keycode == KEY_ESC)
 		ft_mlx_close_window(mlx);
 	if (keycode == KEY_W || keycode == KEY_UP)
@@ -31,12 +30,13 @@ int	ft_mlx_keypress(int keycode, t_mlx *mlx)
 int	ft_mlx_close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
-	ft_put_exrror("CLOSE ESC");
+	ft_put_exrror("[So_Long] Exit by user.");
 	return (0);
 }
 
 short	ft_mlx_setup_hook(t_mlx *mlx)
 {
+	mlx_loop_hook(mlx->mlx_id, main_loop_animation, mlx);
 	mlx_key_hook(mlx->window, ft_mlx_keypress, mlx);
 	mlx_hook(mlx->window, 17, 0, ft_mlx_close_window, mlx);
 	return (1);

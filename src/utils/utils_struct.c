@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 23:21:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 05:52:08 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:17:36 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ t_map	*map_init_struct(void)
 	map->txt = NULL;
 	map->col = 0;
 	map->row = 0;
+	map->count_move = 0;
+	map->collect_item = 0;
+	map->health_player = 3;
 	map->pos_player = NULL;
 	map->pos_exit = NULL;
 	map->pos_void = NULL;
@@ -64,10 +67,14 @@ t_img	*texture_init_struct(void)
 	img->width = 0;
 	img->height = 0;
 	img->player = NULL;
-	img->start = NULL;
-	img->exit = NULL;
-	img->i_void = NULL;
-	img->wall = NULL;
+	img->player_start = NULL;
+	img->player_dead = NULL;
 	img->item = NULL;
+	img->wall = NULL;
+	img->exit_close = NULL;
+	img->exit_open = NULL;
+	*img->flat = NULL;
+	*img->monster = NULL;
+	img->monster_frame_index = 0;
 	return (img);
 }
