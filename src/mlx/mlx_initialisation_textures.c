@@ -6,14 +6,17 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:25:58 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 00:25:18 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:07:23 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-
+/*
+** Loading textures
+** Player sprites, Monster sprites, UI elements, and textures map.
+** UI digits elements in uyils_struc.c,, thank's Norm.. :( 
+*/
 static short	ft_mlx_load_texture_flat(t_mlx *mlx, t_img *img)
 {
 	img->flat[0] = mlx_xpm_file_to_image(mlx->mlx_id,
@@ -63,7 +66,7 @@ short	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
 	return (1);
 }
 
-short	ft_mlx_load_texture_ui(t_mlx *mlx, t_img *img)
+static short	ft_mlx_load_texture_health_ui(t_mlx *mlx, t_img *img)
 {
 	img->ui_health[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_UI_HEALTH_0, &img->width, &img->width);
@@ -73,7 +76,12 @@ short	ft_mlx_load_texture_ui(t_mlx *mlx, t_img *img)
 			IMG_UI_HEALTH_2, &img->width, &img->height);
 	img->ui_health[3] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_UI_HEALTH_3, &img->width, &img->height);
-
+	img->ui_item = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_UI_ITEM, &img->width, &img->height);
+	img->ui_banner_turn[0] = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_MONSTER_BANNER, &img->width, &img->height);
+	img->ui_banner_turn[1] = mlx_xpm_file_to_image(mlx->mlx_id,
+			IMG_PLAYER_BANNER, &img->width, &img->height);
 	mlx->img = img;
 	return (1);
 }
@@ -82,13 +90,10 @@ short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
 {
 	img->player_dead = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_P_DEAD, &img->width, &img->height);
-	img->player_start = mlx_xpm_file_to_image(mlx->mlx_id,
-			IMG_P_START, &img->width, &img->height);
 	img->item = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_ITEM, &img->width, &img->height);
 	img->wall = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_WALL, &img->width, &img->height);
-
 	img->exit_close = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_EXIT, &img->width, &img->height);
 	img->exit_open = mlx_xpm_file_to_image(mlx->mlx_id,
@@ -96,6 +101,7 @@ short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
 	ft_mlx_load_texture_flat(mlx, img);
 	ft_mlx_load_texture_monsters(mlx, img);
 	ft_mlx_load_texture_player_anim(mlx, img);
-	ft_mlx_load_texture_ui(mlx, img);
+	ft_mlx_load_texture_digits_ui(mlx, img);
+	ft_mlx_load_texture_health_ui(mlx, img);
 	return (1);
 }

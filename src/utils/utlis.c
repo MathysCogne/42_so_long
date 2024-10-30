@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 01:34:15 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 03:28:52 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:42:10 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ size_t	generate_random_nb(size_t index)
 size_t	random_index_0_5(size_t index)
 {
 	size_t	random_nb;
+
 	index *= 1103515245;
 	index /= 4;
 	random_nb = generate_random_nb(index) % 100;

@@ -6,19 +6,12 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 03:35:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 06:08:55 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:40:45 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-/*
-** • La carte doit contenir 1 sortie, au moins 1 item et 1 position de départ.							CHECK !
-** • La carte doit être de forme rectangulaire.															CHECK !
-** • La carte doit être fermée en étant encadrée par des murs.											CHECK !
-** • Vous devez vérifier s’il existe un chemin valide (i.e. qu’il est possible d’emprunter)			TODO
-** • Si la map contient des doublons, vous devez afficher un message d’erreur.							CHECK !
-** • Votre programme doit prendre en paramètre un fichier de carte se terminant par l’extension .ber	CHECK !
-*/
+
 short	map_contain_exit_start_item(t_map *map)
 {
 	if (map->count_exit != 1)

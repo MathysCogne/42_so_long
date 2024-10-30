@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:32:40 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 00:12:07 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:28:33 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,19 @@ void	anim_game_over(t_mlx *mlx)
 		i = mlx->map->col;
 		j = mlx->map->col * (mlx->map->row - 1);
 	}
-	if (i == (mlx->map->col * (mlx->map->row )) / 2)
+	if (i == (mlx->map->col * (mlx->map->row)) / 2)
 		return ;
 	ft_mlx_put_image_to_window(mlx, mlx->img->wall, i);
 	ft_mlx_put_image_to_window(mlx, mlx->img->wall, j);
 	i++;
 	--j;
-	ft_printf("UN MUR ici %d !\n", i);
 }
 
 void	game_over(t_mlx *mlx)
 {
-	(void)mlx;
+	ft_mlx_put_image_to_window(mlx, mlx->img->player_dead,
+		*mlx->map->pos_player);
+	*mlx->map->pos_player = mlx->map->col * mlx->map->row;
 	ft_printf("\nGAME OVER !\n");
 }
 

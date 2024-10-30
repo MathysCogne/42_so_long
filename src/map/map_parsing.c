@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 02:12:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/28 17:13:55 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:41:40 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ short	map_add_pos(size_t **item, size_t *count, size_t pos)
 {
 	size_t	*new_pos;
 
-	new_pos = ft_realloc(*item, (*count) * sizeof(size_t), (*count + 1) * sizeof(size_t));
+	new_pos = ft_realloc(*item, (*count) * sizeof(size_t),
+			(*count + 1) * sizeof(size_t));
 	if (!new_pos)
 		return (0);
 	*item = new_pos;
@@ -91,17 +92,23 @@ short	map_parse(t_map *map)
 	i = 0;
 	while (map->txt[i])
 	{
-		if (map->txt[i] == START && !map_add_pos(&map->pos_player, &map->count_start, i))
+		if (map->txt[i] == START
+			&& !map_add_pos(&map->pos_player, &map->count_start, i))
 			return (0);
-		if (map->txt[i] == EXIT && !map_add_pos(&map->pos_exit, &map->count_exit, i))
+		if (map->txt[i] == EXIT
+			&& !map_add_pos(&map->pos_exit, &map->count_exit, i))
 			return (0);
-		if (map->txt[i] == VOID && !map_add_pos(&map->pos_void, &map->count_void, i))
+		if (map->txt[i] == VOID
+			&& !map_add_pos(&map->pos_void, &map->count_void, i))
 			return (0);
-		if (map->txt[i] == WALL && !map_add_pos(&map->pos_wall, &map->count_wall, i))
+		if (map->txt[i] == WALL
+			&& !map_add_pos(&map->pos_wall, &map->count_wall, i))
 			return (0);
-		if (map->txt[i] == ITEM && !map_add_pos(&map->pos_item, &map->count_item, i))
+		if (map->txt[i] == ITEM
+			&& !map_add_pos(&map->pos_item, &map->count_item, i))
 			return (0);
-		if (map->txt[i] == MONSTER && !map_add_pos(&map->pos_monster, &map->count_monster, i))
+		if (map->txt[i] == MONSTER
+			&& !map_add_pos(&map->pos_monster, &map->count_monster, i))
 			return (0);
 		i++;
 	}
@@ -142,11 +149,9 @@ short	map_init(char *path, t_map **map)
 		return (0);
 	map_count_col_row(*map);
 	(*map)->txt = map_revove_n(*map);
-
 	if (!map_parse(*map))
 		return (0);
-
 	if (!map_verif(*map))
-		return(0);
+		return (0);
 	return (1);
 }

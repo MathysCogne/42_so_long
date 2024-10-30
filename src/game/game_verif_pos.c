@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:34:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/29 23:24:33 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:27:24 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ short	is_wall_pos_or_door_close(t_map *map, size_t col, size_t row)
 
 	pos = row * map->col + col;
 	if (pos == map->pos_exit[0] && map->collect_item != map->count_item)
-			return (1);
+		return (1);
 	i = 0;
 	while (i < map->count_wall)
 	{
@@ -39,7 +39,8 @@ short	is_item_pos(t_map *map, size_t pos)
 	{
 		if (pos == map->pos_item[i])
 		{
-			map->pos_item[i] = 0;
+			if (pos == *map->pos_player)
+				map->pos_item[i] = 0;
 			return (1);
 		}
 		i++;
