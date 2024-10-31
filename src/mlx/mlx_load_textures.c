@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_initialisation_textures.c                      :+:      :+:    :+:   */
+/*   mlx_load_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:25:58 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 20:07:23 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:02:49 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Loading textures
 ** Player sprites, Monster sprites, UI elements, and textures map.
-** UI digits elements in uyils_struc.c,, thank's Norm.. :( 
+** UI digits and wall in load textures 2
 */
 static short	ft_mlx_load_texture_flat(t_mlx *mlx, t_img *img)
 {
@@ -47,7 +47,7 @@ static short	ft_mlx_load_texture_monsters(t_mlx *mlx, t_img *img)
 	return (1);
 }
 
-short	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
+static short	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
 {
 	img->player[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_PLAYER_0, &img->width, &img->height);
@@ -102,6 +102,7 @@ short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
 	ft_mlx_load_texture_monsters(mlx, img);
 	ft_mlx_load_texture_player_anim(mlx, img);
 	ft_mlx_load_texture_digits_ui(mlx, img);
+	ft_mlx_load_texture_wall_ext(mlx, img);
 	ft_mlx_load_texture_health_ui(mlx, img);
 	return (1);
 }

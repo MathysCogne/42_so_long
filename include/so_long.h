@@ -1,13 +1,15 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <fcntl.h>
+
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "mlx.h"
 
-# include <stdlib.h>
-# include <fcntl.h>
+# include "path_textures.h"
+# include "struct.h"
 
 /*************** MACRO ***************/
 /*** MAP ***/
@@ -31,64 +33,12 @@
 # define KEY_ENTER		65293
 # define KEY_SPACE		32
 
-/*** IMG TEXTURES ***/
-# define IMG_PLAYER			"./sprites/player/player_flat.xpm"
-# define IMG_P_DEAD			"./sprites/player/player_dead.xpm"
-# define IMG_PLAYER_0		"./sprites/player/frame_anim/player_0.xpm"
-# define IMG_PLAYER_1		"./sprites/player/frame_anim/player_1.xpm"
-# define IMG_PLAYER_2		"./sprites/player/frame_anim/player_2.xpm"
-# define IMG_PLAYER_3		"./sprites/player/frame_anim/player_3.xpm"
-# define IMG_PLAYER_4		"./sprites/player/frame_anim/player_4.xpm"
-# define IMG_PLAYER_5		"./sprites/player/frame_anim/player_5.xpm"
-# define IMG_PLAYER_6		"./sprites/player/frame_anim/player_6.xpm"
-
-# define IMG_MONSTER_0		"./sprites/monsters/monster_0.xpm"
-# define IMG_MONSTER_1		"./sprites/monsters/monster_1.xpm"
-# define IMG_MONSTER_2		"./sprites/monsters/monster_2.xpm"
-# define IMG_MONSTER_3		"./sprites/monsters/monster_3.xpm"
-# define IMG_MONSTER_4		"./sprites/monsters/monster_4.xpm"
-
-# define IMG_PLAYER_BANNER	"./sprites/player/player_banner.xpm"
-# define IMG_MONSTER_BANNER	"./sprites/monsters/monsters_banner.xpm"
-
-# define IMG_ITEM			"./sprites/item.xpm"
-
-# define IMG_WALL			"./sprites/wall.xpm"
-
-# define IMG_EXIT			"./sprites/exit/end_close.xpm"
-# define IMG_EXIT_OPEN		"./sprites/exit/end_open.xpm"
-
-# define IMG_FLAT			"./sprites/flat/flat_0.xpm"
-# define IMG_FLAT_1			"./sprites/flat/flat_1.xpm"
-# define IMG_FLAT_2			"./sprites/flat/flat_2.xpm"
-# define IMG_FLAT_3			"./sprites/flat/flat_3.xpm"
-# define IMG_FLAT_4			"./sprites/flat/flat_4.xpm"
-
-# define IMG_UI_HEALTH_0	"./sprites/ui_health/health_0.xpm"
-# define IMG_UI_HEALTH_1	"./sprites/ui_health/health_1.xpm"
-# define IMG_UI_HEALTH_2	"./sprites/ui_health/health_2.xpm"
-# define IMG_UI_HEALTH_3	"./sprites/ui_health/health_3.xpm"
-
-# define IMG_UI_DIGIT_0		"./sprites/ui_digits/digit_0.xpm"
-# define IMG_UI_DIGIT_1		"./sprites/ui_digits/digit_1.xpm"
-# define IMG_UI_DIGIT_2		"./sprites/ui_digits/digit_2.xpm"
-# define IMG_UI_DIGIT_3		"./sprites/ui_digits/digit_3.xpm"
-# define IMG_UI_DIGIT_4		"./sprites/ui_digits/digit_4.xpm"
-# define IMG_UI_DIGIT_5		"./sprites/ui_digits/digit_5.xpm"
-# define IMG_UI_DIGIT_6		"./sprites/ui_digits/digit_6.xpm"
-# define IMG_UI_DIGIT_7		"./sprites/ui_digits/digit_7.xpm"
-# define IMG_UI_DIGIT_8		"./sprites/ui_digits/digit_8.xpm"
-# define IMG_UI_DIGIT_9		"./sprites/ui_digits/digit_9.xpm"
-# define IMG_UI_DIGIT_10	"./sprites/ui_digits/digit_banner.xpm"
-
-# define IMG_UI_ITEM		"./sprites/ui_digits/item_banner.xpm"
-
 /*** IMG PARAM ***/
 # define IMG_WIDTH				49
 # define IMG_WIDTH_HEALTH		98
 
 # define ANIM_SPEED				6000
-# define ANIM_MOVE_MONSTERS		20000
+# define ANIM_MOVE_MONSTERS		12000
 
 # define FRAME_COUNT_MONSTER	5
 # define FRAME_COUNT_PLAYER		7
@@ -97,62 +47,12 @@
 short	so_long(char *path);
 
 /**************** MAP ****************/
-typedef struct	s_map
-{
-	char		*txt;
-	size_t		col;
-	size_t		row;
-	size_t		count_move;
-	size_t		collect_item;
-	size_t		health_player;
-	size_t		*pos_player;
-	size_t		*pos_exit;
-	size_t		*pos_void;
-	size_t		*pos_wall;
-	size_t		*pos_item;
-	size_t		*pos_monster;
-	size_t		count_start;
-	size_t		count_exit;
-	size_t		count_void;
-	size_t		count_wall;
-	size_t		count_item;
-	size_t		count_monster;
-}				t_map;
-
 short	map_validate_ext(char *path);
 short	map_init(char *path, t_map **map);
 short	map_verif(t_map *map);
 short	map_valid_path(t_map *map);
 
-/************* TEXTURES **************/
-typedef struct s_img
-{
-	int		width;
-	int		height;
-	void	*player[FRAME_COUNT_PLAYER];
-	void	*player_dead;
-	void	*item;
-	void	*wall;
-	void	*exit_close;
-	void	*exit_open;
-	void	*flat[5];
-	void	*monster[FRAME_COUNT_MONSTER];
-	void	*ui_health[4];
-	void	*ui_digits[11];
-	void	*ui_item;
-	void	*ui_banner_turn[2];
-}			t_img;
-
 /**************** MLX ****************/
-typedef struct s_mlx
-{
-	void	*mlx_id;
-	void	*window;
-	size_t	is_player_turn;
-	t_map	*map;
-	t_img	*img;
-}			t_mlx;
-
 short	ft_mlx_start(t_map **map, t_mlx **mlx_data, t_img **img_data);
 short	ft_mlx_setup_hook(t_mlx *mlx);
 int		ft_mlx_close_window(t_mlx *mlx);
@@ -160,6 +60,7 @@ int		ft_mlx_keypress(int	keycode, t_mlx *mlx);
 short	ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img);
 short	ft_mlx_load_texture(t_mlx *mlx, t_img *img);
 short	ft_mlx_load_texture_digits_ui(t_mlx *mlx, t_img *img); // ? In utils_struct, thank's norm..
+short	ft_mlx_load_texture_wall_ext(t_mlx *mlx, t_img *img); // ? In utils_struct, thank's norm..
 short	ft_mlx_put_image_to_window(t_mlx *mlx, void *ptr_img, size_t pos);
 int		main_loop_animation(t_mlx *mlx);
 void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map);
@@ -169,13 +70,6 @@ short	map_init_render(t_map *map, t_mlx *mlx, t_img *img); // TODO MOVE TO MAP
 short	map_randomize_patern_void(t_mlx *mlx, t_img *img, size_t col, size_t row);
 
 /*************** GAME ****************/
-typedef struct	s_monster {
-	size_t	id;
-	size_t	pos;
-	size_t	col;
-	size_t	row;
-} 		t_monster;
-
 short	move_player(t_mlx *mlx, int to_row, int to_col);
 short	move_monsters_ia(t_mlx *mlx, t_map *map);
 short	is_wall_pos_or_door_close(t_map *map, size_t col, size_t row);

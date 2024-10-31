@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:08:18 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 19:55:55 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:10:18 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 ** - Differences in position (delta).
 ** - Decide on the best axis to move.
 ** - Move the monster towards the player, trying alternate moves if blocked.
+** - Move turn by turn (Time with main loop mlx animation)
+** - Define turn player (After 2 turn)
 */
 void	put_image_at_pos(t_mlx *mlx, t_monster *monster, size_t col, size_t row)
 {
@@ -111,6 +113,23 @@ void	follow_player(t_mlx *mlx, int p_col, int p_row, t_monster *monster)
 	}
 }
 
+static void	is_turn_player(t_mlx *mlx)
+{
+	static size_t	turn_monster;
+
+	if (!turn_monster)
+		turn_monster = 0;
+	turn_monster++;
+	if (turn_monster == 2)
+	{
+		mlx->is_player_turn = 1;
+		set_turn_banner(mlx);
+		turn_monster = 0;
+		return ;
+	}
+	return ;
+}
+
 short	move_monsters_ia(t_mlx *mlx, t_map *map)
 {
 	t_monster		*monsters;
@@ -126,8 +145,9 @@ short	move_monsters_ia(t_mlx *mlx, t_map *map)
 	follow_player(mlx, pos_player_col, pos_player_row, &monsters[i_frame]);
 	i_frame = (i_frame + 1) % map->count_monster;
 	if (i_frame == 0)
-		mlx->is_player_turn = 1;
-	set_turn_banner(mlx);
+		is_turn_player(mlx);
+	if (mlx->map->health_player <= 0)
+		game_over(mlx);
 	free(monsters);
 	return (0);
 }

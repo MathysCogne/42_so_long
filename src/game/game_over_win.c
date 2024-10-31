@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:32:40 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 19:28:33 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:31:09 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,26 @@ void	anim_game_over(t_mlx *mlx)
 {
 	static size_t	i;
 	static size_t	j;
+	size_t			inner_col;
+	size_t			inner_row;
 
+	inner_col = mlx->map->col - 2;
+	inner_row = mlx->map->row - 2;
 	if (!i)
 	{
-		i = mlx->map->col;
-		j = mlx->map->col * (mlx->map->row - 1);
+		i = mlx->map->col + 1;
+		j = (mlx->map->row - 1) * mlx->map->col - 2;
 	}
-	if (i == (mlx->map->col * (mlx->map->row)) / 2)
+	if (i >= ((inner_row * mlx->map->col) - inner_col))
 		return ;
-	ft_mlx_put_image_to_window(mlx, mlx->img->wall, i);
-	ft_mlx_put_image_to_window(mlx, mlx->img->wall, j);
+	ft_mlx_put_image_to_window(mlx, mlx->img->wall_ext[8], i);
+	ft_mlx_put_image_to_window(mlx, mlx->img->wall_ext[8], j);
 	i++;
-	--j;
+	if (i % mlx->map->col == mlx->map->col - 1)
+		i += 2;
+	j--;
+	if (j % mlx->map->col == 0)
+		j -= 2;
 }
 
 void	game_over(t_mlx *mlx)

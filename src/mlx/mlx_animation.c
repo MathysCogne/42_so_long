@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:21:05 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 20:03:50 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:21:05 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** Renders the animation for
 ** - Monsters
 ** - Player
-** Main loop for animation (Amimation basic and manage time turn for monsters)
+** Main loop for amimation p & m and manage time turn for monsters 
+** when mlx->is_player_turn = 1)
 */
 void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 05:00:35 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 20:37:25 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:10:29 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** - Update player's position on map.
 ** - Call events after movement.
 ** - Increment move / Collected Item / Check attack monster / health
-** - Define turn monsters (Turn is define with heatlh player (ex 3hp = 3 turn))
+** - Define turn monsters (Turn is define with heatlh player (3hp = 3 + 1 turn))
 */
 static void	launch_event_move(t_mlx *mlx, size_t pos_player)
 {
@@ -48,7 +48,7 @@ static void	is_turn_monsters(t_mlx *mlx)
 	if (!turn_player)
 		turn_player = 0;
 	turn_player++;
-	if (turn_player == mlx->map->health_player)
+	if (turn_player == mlx->map->health_player + 1)
 	{
 		mlx->is_player_turn = 0;
 		set_turn_banner(mlx);

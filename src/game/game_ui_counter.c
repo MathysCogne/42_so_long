@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 09:56:52 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 19:58:43 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:59:21 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	put_a_digit_move(t_mlx *mlx, short digit, size_t pos)
 
 	if (digit < 0 || digit > 9)
 		return ;
-	col = ((mlx->map->col + 4) / 2) * IMG_WIDTH;
-	row = (mlx->map->row - 1) * IMG_WIDTH;
+	col = (((mlx->map->col - 1) / 2) + 3) * IMG_WIDTH;
+	row = 0;
 	if (pos == 1)
 		mlx_put_image_to_window(mlx->mlx_id, mlx->window,
 			mlx->img->ui_digits[digit], col + 34, row + 20);
@@ -49,14 +49,14 @@ static void	put_a_digit_move(t_mlx *mlx, short digit, size_t pos)
 
 void	draw_digit_move(t_mlx *mlx, size_t digit)
 {
-	size_t	row;
+	size_t	col;
 	char	*nb;
 
 	nb = malloc(sizeof(char) * 4);
 	nb = ft_itoa(digit);
-	row = (mlx->map->row - 1) * IMG_WIDTH;
+	col = (((mlx->map->col - 1) / 2) + 3) * IMG_WIDTH;
 	mlx_put_image_to_window(mlx->mlx_id, mlx->window, mlx->img->ui_digits[10],
-		((mlx->map->col + 4) / 2) * IMG_WIDTH, row);
+		col, 0);
 	put_a_digit_move(mlx, 0, 1);
 	put_a_digit_move(mlx, 0, 2);
 	if (ft_strlen(nb) == 1)
@@ -82,8 +82,8 @@ static void	put_a_digit_item(t_mlx *mlx, short digit, size_t pos)
 
 	if (digit < 0 || digit > 9)
 		return ;
-	col = ((mlx->map->col - 8) / 2) * IMG_WIDTH;
-	row = (mlx->map->row - 1) * IMG_WIDTH;
+	col = (((mlx->map->col - 1) / 2) - 3) * IMG_WIDTH;
+	row = 0;
 	if (pos == 1)
 		mlx_put_image_to_window(mlx->mlx_id, mlx->window,
 			mlx->img->ui_digits[digit], col + 34, row + 20);
@@ -100,8 +100,8 @@ void	draw_digit_item(t_mlx *mlx, size_t digit)
 
 	nb = malloc(sizeof(char) * 3);
 	nb = ft_itoa(digit);
-	col = ((mlx->map->col - 8) / 2) * IMG_WIDTH;
-	row = (mlx->map->row - 1) * IMG_WIDTH;
+	col = (((mlx->map->col - 1) / 2) - 3) * IMG_WIDTH;
+	row = 0;
 	mlx_put_image_to_window(mlx->mlx_id, mlx->window,
 		mlx->img->ui_item, col, row);
 	put_a_digit_item(mlx, 0, 1);
