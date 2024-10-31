@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 03:35:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 19:40:45 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:16:13 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ short	map_verif(t_map *map)
 	if (!map_rectangular(map))
 		return (0);
 	if (!map_closed_wall(map))
+		return (0);
+	if (!map_valid_path(map))
 		return (0);
 	return (1);
 }

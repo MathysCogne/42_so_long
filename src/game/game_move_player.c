@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 05:00:35 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 14:10:29 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:11:26 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 */
 static void	launch_event_move(t_mlx *mlx, size_t pos_player)
 {
-	mlx->map->count_move++;
+	ft_printf("[So_Long] Total movements: %d\n", ++mlx->map->count_move);
 	if (is_item_pos(mlx->map, pos_player))
 	{
 		mlx->map->collect_item++;

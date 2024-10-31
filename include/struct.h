@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:44:17 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 13:05:00 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:04:58 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_img
 	void	*player_dead;
 	void	*item;
 	void	*wall;
-	void	*wall_ext[8];
+	void	*wall_ext[9];
 	void	*exit_close;
 	void	*exit_open;
 	void	*flat[5];
