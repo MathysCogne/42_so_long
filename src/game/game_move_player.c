@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 05:00:35 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 15:11:26 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 07:05:20 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void	launch_event_move(t_mlx *mlx, size_t pos_player)
 		game_win(mlx);
 	if (is_monster_pos(mlx->map, pos_player))
 		attack_to_player(mlx, mlx->map);
-	if (mlx->map->health_player <= 0)
-		game_over(mlx);
+	// if (mlx->map->health_player <= 0)
+	// 	game_over(mlx);
 	draw_digit_move(mlx, mlx->map->count_move);
 }
 
@@ -48,7 +48,7 @@ static void	is_turn_monsters(t_mlx *mlx)
 	if (!turn_player)
 		turn_player = 0;
 	turn_player++;
-	if (turn_player == mlx->map->health_player + 1)
+	if (turn_player == mlx->map->health_player + 1 && mlx->map->count_monster != 0)
 	{
 		mlx->is_player_turn = 0;
 		set_turn_banner(mlx);

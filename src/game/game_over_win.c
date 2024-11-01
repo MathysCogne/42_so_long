@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:32:40 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 14:31:09 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 07:19:35 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	anim_game_over(t_mlx *mlx)
 		j = (mlx->map->row - 1) * mlx->map->col - 2;
 	}
 	if (i >= ((inner_row * mlx->map->col) - inner_col))
+	{
+		game_over(mlx);
 		return ;
+	}
 	ft_mlx_put_image_to_window(mlx, mlx->img->wall_ext[8], i);
 	ft_mlx_put_image_to_window(mlx, mlx->img->wall_ext[8], j);
 	i++;
@@ -40,14 +43,24 @@ void	anim_game_over(t_mlx *mlx)
 
 void	game_over(t_mlx *mlx)
 {
-	ft_mlx_put_image_to_window(mlx, mlx->img->player_dead,
-		*mlx->map->pos_player);
-	*mlx->map->pos_player = mlx->map->col * mlx->map->row;
-	ft_printf("\nGAME OVER !\n");
+	// TODO ADD mlx_destroy_image
+	mlx_destroy_window(mlx->mlx_id, mlx->window);
+	mlx_destroy_display(mlx->mlx_id);
+	free_struct_map(mlx->map);
+	free_struct_img(mlx->img);
+	free_struct_mlx(mlx);
+	ft_printf("[So_Long] GAME OVER ! Try again ?\n");
+	exit(EXIT_SUCCESS);
 }
 
 void	game_win(t_mlx *mlx)
 {
-	(void)mlx;
-	ft_printf("\nWIN GAME GG !\n");
+	// TODO ADD mlx_destroy_image
+	mlx_destroy_window(mlx->mlx_id, mlx->window);
+	mlx_destroy_display(mlx->mlx_id);
+	free_struct_map(mlx->map);
+	free_struct_img(mlx->img);
+	free_struct_mlx(mlx);
+	ft_printf("[So_Long] YOU ARE REALLY THE BEST !\n");
+	exit(EXIT_SUCCESS);
 }

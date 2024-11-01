@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:25:58 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 13:02:49 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 06:27:14 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Player sprites, Monster sprites, UI elements, and textures map.
 ** UI digits and wall in load textures 2
 */
-static short	ft_mlx_load_texture_flat(t_mlx *mlx, t_img *img)
+static void	ft_mlx_load_texture_flat(t_mlx *mlx, t_img *img)
 {
 	img->flat[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_FLAT, &img->width, &img->height);
@@ -29,10 +29,9 @@ static short	ft_mlx_load_texture_flat(t_mlx *mlx, t_img *img)
 			IMG_FLAT_3, &img->width, &img->height);
 	img->flat[4] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_FLAT_4, &img->width, &img->height);
-	return (1);
 }
 
-static short	ft_mlx_load_texture_monsters(t_mlx *mlx, t_img *img)
+static void	ft_mlx_load_texture_monsters(t_mlx *mlx, t_img *img)
 {
 	img->monster[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_MONSTER_0, &img->width, &img->height);
@@ -44,10 +43,9 @@ static short	ft_mlx_load_texture_monsters(t_mlx *mlx, t_img *img)
 			IMG_MONSTER_3, &img->width, &img->height);
 	img->monster[4] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_MONSTER_4, &img->width, &img->height);
-	return (1);
 }
 
-static short	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
+static void	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
 {
 	img->player[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_PLAYER_0, &img->width, &img->height);
@@ -63,10 +61,9 @@ static short	ft_mlx_load_texture_player_anim(t_mlx *mlx, t_img *img)
 			IMG_PLAYER_5, &img->width, &img->height);
 	img->player[6] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_PLAYER_6, &img->width, &img->height);
-	return (1);
 }
 
-static short	ft_mlx_load_texture_health_ui(t_mlx *mlx, t_img *img)
+static void	ft_mlx_load_texture_health_ui(t_mlx *mlx, t_img *img)
 {
 	img->ui_health[0] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_UI_HEALTH_0, &img->width, &img->width);
@@ -83,7 +80,6 @@ static short	ft_mlx_load_texture_health_ui(t_mlx *mlx, t_img *img)
 	img->ui_banner_turn[1] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_PLAYER_BANNER, &img->width, &img->height);
 	mlx->img = img;
-	return (1);
 }
 
 short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
@@ -104,5 +100,7 @@ short	ft_mlx_load_texture(t_mlx *mlx, t_img *img)
 	ft_mlx_load_texture_digits_ui(mlx, img);
 	ft_mlx_load_texture_wall_ext(mlx, img);
 	ft_mlx_load_texture_health_ui(mlx, img);
-	return (1);
+	if (verif_load_texture(mlx))
+		return (1);
+	return (0);
 }

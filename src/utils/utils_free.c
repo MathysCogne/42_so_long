@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 01:33:49 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:00:24 by mcogne--         ###   ########.fr       */
+/*   Created: 2024/11/01 06:05:57 by mcogne--          #+#    #+#             */
+/*   Updated: 2024/11/01 07:01:36 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static short	map_validate_ext(char *path)
+void	free_struct_mlx(t_mlx *mlx)
 {
-	size_t	len;
-
-	len = ft_strlen(path);
-	if (len < 4)
-		return (1);
-	if (ft_strncmp(path + len - 4, ".ber", len) == 0)
-		return (0);
-	return (1);
+	free(mlx);
 }
 
-int	main(int argc, char **argv)
+void	free_struct_map(t_map *map)
 {
-	if (argc != 2)
-		ft_msg_put_exrror("Usage: ./so_long [path to map.ber]");
-	if (map_validate_ext(argv[1]))
-		ft_msg_put_exrror("Arg: Please use a .ber file");
-	so_long(argv[1]);
-	return (0);
+	free(map);
+}
+
+void	free_struct_img(t_img *img)
+{
+	free(img);
 }

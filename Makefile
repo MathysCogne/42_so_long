@@ -12,7 +12,7 @@ SRC = main.c \
 		map/map_parsing.c map/map_verif.c map/map_valid_path.c map/map_draw.c \
 		mlx/mlx_initialisation.c mlx/mlx_load_textures.c mlx/mlx_load_textures_2.c mlx/mlx_events.c mlx/mlx_animation.c \
 		game/game_move_player.c game/game_move_monsters.c game/game_verif_pos.c game/game_health_attack_player.c game/game_over_win.c game/game_ui_counter.c \
-		utils/utlis.c utils/utils_struct.c utils/utils_mlx.c
+		utils/utlis.c utils/utils_struct.c utils/utils_mlx.c utils/utils_verif_load_textures.c utils/utils_free.c utils/utils_error.c
 
 OBJ = $(SRC:.c=.o)
 SRC := $(addprefix $(SRCDIR)/, $(SRC))

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:21:05 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 11:21:05 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 07:09:41 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map)
 	i_frame = (i_frame + 1) % FRAME_COUNT_MONSTER;
 }
 
-void	render_animation_player(t_mlx *mlx, t_img *img, t_map *map)
+static void	render_animation_player(t_mlx *mlx, t_img *img, t_map *map)
 {
 	static size_t	i_frame;
 	size_t			pos;
@@ -47,6 +47,19 @@ void	render_animation_player(t_mlx *mlx, t_img *img, t_map *map)
 	pos = *map->pos_player;
 	ft_mlx_put_image_to_window(mlx, img->player[i_frame], pos);
 	i_frame = (i_frame + 1) % FRAME_COUNT_PLAYER;
+}
+
+static void	event_anim_animspeed(t_mlx *mlx)
+{
+	render_animation_monsters(mlx, mlx->img, mlx->map);
+	render_animation_player(mlx, mlx->img, mlx->map);
+	if (mlx->map->health_player <= 0)
+	{
+		ft_mlx_put_image_to_window(mlx, mlx->img->player_dead,
+				*mlx->map->pos_player);
+		*mlx->map->pos_player = mlx->map->col * mlx->map->row;
+		anim_game_over(mlx);
+	}
 }
 
 int	main_loop_animation(t_mlx *mlx)
@@ -61,10 +74,7 @@ int	main_loop_animation(t_mlx *mlx)
 	}
 	if (frame_count > ANIM_SPEED)
 	{
-		render_animation_monsters(mlx, mlx->img, mlx->map);
-		render_animation_player(mlx, mlx->img, mlx->map);
-		if (mlx->map->health_player <= 0)
-			anim_game_over(mlx);
+		event_anim_animspeed(mlx);
 		frame_count = 0;
 	}
 	if (frame_count_ia_monster > ANIM_MOVE_MONSTERS)

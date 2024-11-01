@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 01:34:15 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 15:19:00 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 06:35:02 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,6 @@ size_t	random_index_0_5(size_t index)
 		return (3);
 	else
 		return (4);
-}
-
-void	ft_put_exrror(char *msg_error)
-{
-	ft_putstr_fd("Error.\n", 0);
-	ft_putstr_fd(msg_error, 0);
-	ft_putstr_fd("\n", 0);
-	// TODO ADD SORTIE PGRM PROPREMENT
-	exit(EXIT_FAILURE);
 }
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)

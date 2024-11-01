@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 04:17:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/30 20:05:01 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 07:07:49 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_mlx_keypress(int keycode, t_mlx *mlx)
 int	ft_mlx_close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
-	ft_put_exrror("[So_Long] Exit by user.");
+	put_error(10, mlx, mlx->map);
 	return (0);
 }
 

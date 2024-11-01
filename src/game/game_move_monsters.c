@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 18:08:18 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 14:10:18 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/01 07:11:03 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,6 @@ short	move_monsters_ia(t_mlx *mlx, t_map *map)
 	i_frame = (i_frame + 1) % map->count_monster;
 	if (i_frame == 0)
 		is_turn_player(mlx);
-	if (mlx->map->health_player <= 0)
-		game_over(mlx);
 	free(monsters);
 	return (0);
 }

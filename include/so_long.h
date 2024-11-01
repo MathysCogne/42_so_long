@@ -38,35 +38,43 @@
 # define IMG_WIDTH_HEALTH		98
 
 # define ANIM_SPEED				6000
-# define ANIM_MOVE_MONSTERS		12000
+# define ANIM_MOVE_MONSTERS		8000
 
 # define FRAME_COUNT_MONSTER	5
 # define FRAME_COUNT_PLAYER		7
 
+/*** ERROR MSG ***/
+# define ERROR_MSG_CHARAC			"Map: Invalid character. Try again !"
+# define ERROR_MSG_ITEM_START_END	"Map: Invalid exit or start or item. Would you break my game, you are a HACKER :0 !? "
+# define ERROR_MSG_MAP_RECTANGULAR	"Map: Map is not rectangular, and thank's for all fish !"
+# define ERROR_MSG_MAP_CLOSED_WALL	"Map: Map is not closed by walls, would you cheat ??"
+# define ERROR_MSG_MAP_VALID_PATH	"Map: Nothing path valid for player, is very not fun game !!!"
+# define ERROR_MSG_STRUCTURE		"Init structure: I'm sure you can do something about it ? No ?"
+# define ERROR_MSG_MLX_WIN			"MLX: Window is break ! (Not the bay window..)"
+# define ERROR_MSG_STRUCTURE_LOAD	"MLX: Houston, we’ve had a problem ! NO TEXTURES REPEAT NO TEXTURES"
+# define ERROR_MSG_MLX_LOOP			"MLX: The gremlins have devoured the cables allowing the game's animations, I told you not to feed them !"
+# define ERROR_MSG_EXIT_USER		"Exit by user. Goodbye 👋"
 /************** SO_LONG **************/
 short	so_long(char *path);
 
-/**************** MAP ****************/
-short	map_validate_ext(char *path);
-short	map_init(char *path, t_map **map);
-short	map_verif(t_map *map);
-short	map_valid_path(t_map *map);
-
 /**************** MLX ****************/
-short	ft_mlx_start(t_map **map, t_mlx **mlx_data, t_img **img_data);
+short	ft_mlx_start(t_map **map, t_mlx **mlx);
 short	ft_mlx_setup_hook(t_mlx *mlx);
 int		ft_mlx_close_window(t_mlx *mlx);
 int		ft_mlx_keypress(int	keycode, t_mlx *mlx);
 short	ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img);
 short	ft_mlx_load_texture(t_mlx *mlx, t_img *img);
-short	ft_mlx_load_texture_digits_ui(t_mlx *mlx, t_img *img); // ? In utils_struct, thank's norm..
-short	ft_mlx_load_texture_wall_ext(t_mlx *mlx, t_img *img); // ? In utils_struct, thank's norm..
+short	ft_mlx_load_texture_digits_ui(t_mlx *mlx, t_img *img);
+short	ft_mlx_load_texture_wall_ext(t_mlx *mlx, t_img *img);
 short	ft_mlx_put_image_to_window(t_mlx *mlx, void *ptr_img, size_t pos);
 int		main_loop_animation(t_mlx *mlx);
 void	render_animation_monsters(t_mlx *mlx, t_img *img, t_map *map);
 
-
-short	map_init_render(t_map *map, t_mlx *mlx, t_img *img); // TODO MOVE TO MAP
+/**************** MAP ****************/
+short	map_init(char *path, t_map **map);
+short	map_verif(t_map *map);
+short	map_valid_path(t_map *map);
+short	map_init_render(t_map *map, t_mlx *mlx, t_img *img);
 short	map_randomize_patern_void(t_mlx *mlx, t_img *img, size_t col, size_t row);
 
 /*************** GAME ****************/
@@ -87,15 +95,20 @@ void	set_turn_banner(t_mlx *mlx);
 void	follow_player(t_mlx *mlx, int p_col, int p_row, t_monster *monster);
 
 /*************** UTILS ***************/
-void	ft_put_exrror(char *msg_error);
-void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-size_t	random_index_0_5(size_t index);
-int		ft_abs(int nb);
-
-/************ UTILS STRUCT ***********/
+void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+size_t		random_index_0_5(size_t index);
+int			ft_abs(int nb);
+short		verif_load_texture(t_mlx *mlx);
 t_map		*map_init_struct(void);
 t_mlx		*ft_mlx_init_struct(void);
 t_img		*texture_init_struct(void);
 t_monster	*initialize_monsters(t_map *map);
+
+/*************** ERROR FREE ***************/
+void	put_error(short errorn, t_mlx *mlx, t_map *map);
+void	ft_msg_put_exrror(char *msg_error);
+void	free_struct_mlx(t_mlx *mlx);
+void	free_struct_map(t_map *map);
+void	free_struct_img(t_img *img);
 
 #endif
