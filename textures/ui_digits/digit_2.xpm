@@ -1,0 +1,26 @@
+/* XPM */
+static char *digit_21730281969[] = {
+/* columns rows colors chars-per-pixel */
+"9 10 10 1 ",
+"  c #FFC2B1",
+". c #FFD0C4",
+"X c #FDE7E1",
+"o c #FDEAE5",
+"O c #FDEEEA",
+"+ c #FDEEEB",
+"@ c #FDF2EF",
+"# c #FDF5F4",
+"$ c #FDF9F9",
+"% c #FDFDFE",
+/* pixels */
+" #%%%%%% ",
+" oOO@%%% ",
+"    .%%% ",
+"    .%%% ",
+"    .%%% ",
+" #%%O    ",
+" #%%O    ",
+" #%%+    ",
+" #%%$XXX ",
+" #%%%%%% "
+};

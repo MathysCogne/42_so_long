@@ -39,7 +39,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g3 -I$(MINILIBX_DIR) -I/usr/include/
 # Detect OS for Flags MiniLibx
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MLXFLAGS += -lmlx -lXext -lX11
+	MLXFLAGS += -lXext -lX11 -lm -lz
 else ifeq ($(UNAME_S),Darwin)
 	MLXFLAGS += -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor
 endif

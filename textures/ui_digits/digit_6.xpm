@@ -1,0 +1,24 @@
+/* XPM */
+static char *digit_61730281968[] = {
+/* columns rows colors chars-per-pixel */
+"9 10 8 1 ",
+"  c #FFC2B1",
+". c #FFD0C4",
+"X c #FEDCD3",
+"o c #FEE7E1",
+"O c #FDEAE6",
+"+ c #FDEEEA",
+"@ c #FDF2EF",
+"# c #FDFDFE",
+/* pixels */
+" ######o ",
+" ###+++X ",
+" ###     ",
+" ###     ",
+" ###     ",
+" ######o ",
+" ###+@#o ",
+" ### .#o ",
+" ###oO#o ",
+" ######o "
+};
