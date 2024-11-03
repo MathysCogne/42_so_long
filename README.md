@@ -10,7 +10,6 @@
 <p>Your mission ? Collect all items before finding the exit... but beware of lurking monsters<p>
 
 </br>
-<img src="https://github.com/ayogun/42-project-badges/blob/main/badges/so_longm.png" alt="Badge So_Long" />
 
 <p><strong>And Thanks for All the Fish !</strong></a></p>
 <p><a href="https://github.com/MathysCogne/42_so_long/blob/main/subject/so_long.pdf"><strong>Subject</strong></a></p>
@@ -20,7 +19,9 @@
 ## Features
 
 </br>
+<div alignitems="center">
 
+ 
 ### Game Objectives (Mandatory part):
 
 - **2D View**
@@ -37,8 +38,13 @@
 - **Turn-Based Mechanics:** The player has as many moves per turn as remaining lives + 1, while monsters always have two moves.
 - **User Interface (UI):** Displays move counter, item counter, lives remaining, and a turn banner indicating if it’s the player’s or monsters' turn.
 
+</div>
 
 </br>
+
+<div align="center">
+<img src="https://github.com/ayogun/42-project-badges/blob/main/badges/so_longm.png" alt="Badge So_Long" />
+</div> 
 
 ### Key Hooks
 
