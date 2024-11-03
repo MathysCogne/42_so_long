@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 23:32:40 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:19:35 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/03 20:26:25 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ void	anim_game_over(t_mlx *mlx)
 
 void	game_over(t_mlx *mlx)
 {
-	// TODO ADD mlx_destroy_image
-	mlx_destroy_window(mlx->mlx_id, mlx->window);
 	mlx_destroy_display(mlx->mlx_id);
+	mlx_destroy_window(mlx->mlx_id, mlx->window);
+	free_struct_img(mlx, mlx->img);
 	free_struct_map(mlx->map);
-	free_struct_img(mlx->img);
 	free_struct_mlx(mlx);
 	ft_printf("[So_Long] GAME OVER ! Try again ?\n");
 	exit(EXIT_SUCCESS);
@@ -59,7 +58,7 @@ void	game_win(t_mlx *mlx)
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
 	mlx_destroy_display(mlx->mlx_id);
 	free_struct_map(mlx->map);
-	free_struct_img(mlx->img);
+	free_struct_img(mlx, mlx->img);
 	free_struct_mlx(mlx);
 	ft_printf("[So_Long] YOU ARE REALLY THE BEST !\n");
 	exit(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 02:12:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:00:46 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:36:41 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*map_revove_n(t_map *map)
 		i++;
 	}
 	tmp[j] = '\0';
+	free(map->txt);
 	return (tmp);
 }
 
@@ -117,6 +118,7 @@ char	*map_read(char *path)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	free(line);
 	return (map_txt);
 }
 

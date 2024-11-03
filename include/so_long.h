@@ -109,6 +109,6 @@ void	put_error(short errorn, t_mlx *mlx, t_map *map);
 void	ft_msg_put_exrror(char *msg_error);
 void	free_struct_mlx(t_mlx *mlx);
 void	free_struct_map(t_map *map);
-void	free_struct_img(t_img *img);
+void	free_struct_img(t_mlx *mlx, t_img *img);
 
 #endif

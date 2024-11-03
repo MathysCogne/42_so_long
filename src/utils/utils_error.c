@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:34:55 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:00:26 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/03 19:50:31 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	put_error(short error, t_mlx *mlx, t_map *map)
 		ft_msg_put_exrror(ERROR_MSG_MAP_VALID_PATH);
 	if (error == 6)
 		ft_msg_put_exrror(ERROR_MSG_STRUCTURE);
-	free_struct_img(mlx->img);
+	free_struct_img(mlx, mlx->img);
 	free_struct_mlx(mlx);
 	if (error == 7)
 		ft_msg_put_exrror(ERROR_MSG_MLX_WIN);

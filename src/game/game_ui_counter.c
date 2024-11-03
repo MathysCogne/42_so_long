@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 09:56:52 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 13:59:21 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:35:54 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	draw_digit_move(t_mlx *mlx, size_t digit)
 	size_t	col;
 	char	*nb;
 
-	nb = malloc(sizeof(char) * 4);
 	nb = ft_itoa(digit);
 	col = (((mlx->map->col - 1) / 2) + 3) * IMG_WIDTH;
 	mlx_put_image_to_window(mlx->mlx_id, mlx->window, mlx->img->ui_digits[10],
@@ -98,7 +97,6 @@ void	draw_digit_item(t_mlx *mlx, size_t digit)
 	size_t	row;
 	char	*nb;
 
-	nb = malloc(sizeof(char) * 3);
 	nb = ft_itoa(digit);
 	col = (((mlx->map->col - 1) / 2) - 3) * IMG_WIDTH;
 	row = 0;
