@@ -10,6 +10,7 @@
 <p>Your mission ? Collect all items before finding the exit... but beware of lurking monsters<p>
 
 </br>
+<img src="https://github.com/ayogun/42-project-badges/blob/main/badges/so_longm.png" alt="Badge So_Long" />
 
 <p><strong>And Thanks for All the Fish !</strong></a></p>
 <p><a href="https://github.com/MathysCogne/42_so_long/blob/main/subject/so_long.pdf"><strong>Subject</strong></a></p>
@@ -103,7 +104,7 @@ Each map in .ber format should adhere to specific structural rules:
 
 **Dependencies**
 
-- Libft: This project depends on my Libft. Please clone [`Libft`](https://github.com/MathysCogne/MyLibft_GNL_Printf).
+- Libft: This project depends on my Libft. Automatically downloaded and installed when you run the make command.
 
 - MiniLibX: The MiniLibX library will be automatically downloaded and installed when you run the make command. Ensure you have the necessary [`prerequisites`](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html) on your machine.
 </br>

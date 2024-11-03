@@ -82,6 +82,9 @@ $(NAME): $(OBJ) $(LIBFT)
 
 # Libft
 $(LIBFT):
+	$(V)echo '[$(NAME)] Downloading Libft from github.com...'$(RESET)
+	@git clone https://github.com/MathysCogne/MyLibft_GNL_Printf.git libft > /dev/null 2>&1
+	$(V)echo '[$(NAME)] Compiling Libft...'$(RESET)
 	$(V)$(MAKE) --silent -C $(LIBFT_DIR)
 	$(V)echo '[$(NAME)] Libft build successfully'
 
@@ -103,7 +106,9 @@ fclean: clean
 	$(V)rm -f $(NAME)
 	$(V)$(MAKE) --silent -C $(LIBFT_DIR) fclean
 	$(V)echo $(RED)'[mlx] Remove directory'$(RESET)
+	$(V)echo $(RED)'[libft] Remove directory'$(RESET)
 	@rm -rf $(MINILIBX_DIR)
+	@rm -rf $(LIBFT_DIR)
 
 re: fclean all
 
