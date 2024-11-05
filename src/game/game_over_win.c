@@ -43,9 +43,10 @@ void	anim_game_over(t_mlx *mlx)
 
 void	game_over(t_mlx *mlx)
 {
+	ft_printf("\n\nCOUCOU \n\n");
+	free_struct_img(mlx, mlx->img);
 	mlx_destroy_display(mlx->mlx_id);
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
-	free_struct_img(mlx, mlx->img);
 	free_struct_map(mlx->map);
 	free_struct_mlx(mlx);
 	ft_printf("[So_Long] GAME OVER ! Try again ?\n");

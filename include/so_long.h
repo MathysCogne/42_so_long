@@ -37,8 +37,8 @@
 # define IMG_WIDTH				49
 # define IMG_WIDTH_HEALTH		98
 
-# define ANIM_SPEED				6000
-# define ANIM_MOVE_MONSTERS		8000
+# define ANIM_SPEED				15000
+# define ANIM_MOVE_MONSTERS		20000
 
 # define FRAME_COUNT_MONSTER	5
 # define FRAME_COUNT_PLAYER		7

@@ -18,6 +18,7 @@ short	so_long(char *path)
 	t_mlx	*mlx;
 	short	error_code;
 
+	mlx = NULL;
 	error_code = map_init(path, &map);
 	if (error_code != 0)
 		put_error(error_code, mlx, map);

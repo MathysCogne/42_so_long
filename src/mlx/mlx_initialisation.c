@@ -31,7 +31,7 @@ short	ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img)
 short	ft_mlx_new_win(t_mlx *mlx, size_t width, size_t height)
 {
 	mlx->mlx_id = mlx_init();
-	mlx->window = mlx_new_window(mlx->mlx_id, width, height, "So Long");
+	mlx->window = mlx_new_window(mlx->mlx_id, (int)width, (int)height, "So_Long");
 	if (!mlx->mlx_id || !mlx->window)
 		return (1);
 	return (0);
