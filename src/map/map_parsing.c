@@ -33,7 +33,9 @@ char	*map_revove_n(t_map *map)
 	size_t	len;
 	char	*tmp;
 
-	len = map->col * map->row;
+	len = 0;
+	while (map->txt[len])
+		len++;
 	tmp = malloc(sizeof(char) * (len + 1));
 	if (!tmp)
 		return (0);

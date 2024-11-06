@@ -12,6 +12,21 @@
 
 #include "so_long.h"
 
+void	ft_msg_error_exit_user(char *msg_error, t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx_id, mlx->window);
+	free_struct_img(mlx, mlx->img);
+	mlx_loop_end(mlx->mlx_id);
+	mlx_destroy_display(mlx->mlx_id);
+	free_struct_map(mlx->map);
+	free_struct_mlx(mlx);
+
+	ft_putstr_fd("Error.\n", 0);
+	ft_putstr_fd(msg_error, 0);
+	ft_putstr_fd("\n", 0);
+	exit(EXIT_FAILURE);
+}
+
 void	put_error(short error, t_mlx *mlx, t_map *map)
 {
 	free_struct_map(map);
@@ -37,8 +52,6 @@ void	put_error(short error, t_mlx *mlx, t_map *map)
 		ft_msg_put_exrror(ERROR_MSG_STRUCTURE_LOAD);
 	if (error == 9)
 		ft_msg_put_exrror(ERROR_MSG_MLX_LOOP);
-	if (error == 10)
-		ft_msg_put_exrror(ERROR_MSG_EXIT_USER);
 }
 
 void	ft_msg_put_exrror(char *msg_error)
@@ -46,6 +59,5 @@ void	ft_msg_put_exrror(char *msg_error)
 	ft_putstr_fd("Error.\n", 0);
 	ft_putstr_fd(msg_error, 0);
 	ft_putstr_fd("\n", 0);
-	// TODO ADD SORTIE PGRM PROPREMENT
 	exit(EXIT_FAILURE);
 }

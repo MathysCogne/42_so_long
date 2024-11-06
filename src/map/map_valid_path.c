@@ -27,7 +27,7 @@ static size_t	foodfill(char *tmp_map, size_t col, size_t start_pos, size_t goal_
 	count += foodfill(tmp_map, col, start_pos + 1, goal_pos);
 	count += foodfill(tmp_map, col, start_pos - 1, goal_pos);
 	if (start_pos == goal_pos)
-		return (count);
+		return (count + 1);
 	return (count);
 }
 
@@ -46,7 +46,7 @@ short	map_valid_path(t_map *map)
 	item = foodfill(tmp_map, map->col, map->pos_player[0], map->pos_exit[0]);
 
 	free(tmp_map);
-	if (item == map->count_item)
+	if (item == map->count_item + 1)
 		return (0);
 	return (1);
 }

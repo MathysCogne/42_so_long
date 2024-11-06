@@ -14,6 +14,7 @@
 
 void	free_struct_mlx(t_mlx *mlx)
 {
+	free(mlx->mlx_id);
 	free(mlx);
 }
 

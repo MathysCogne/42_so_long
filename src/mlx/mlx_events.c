@@ -37,7 +37,12 @@ int	ft_mlx_keypress(int keycode, t_mlx *mlx)
 int	ft_mlx_close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
-	put_error(10, mlx, mlx->map);
+	free_struct_img(mlx, mlx->img);
+	mlx_loop_end(mlx->mlx_id);
+	mlx_destroy_display(mlx->mlx_id);
+	free_struct_map(mlx->map);
+	free_struct_mlx(mlx);
+	ft_msg_put_exrror(ERROR_MSG_EXIT_USER);
 	return (0);
 }
 
