@@ -40,10 +40,8 @@ static void	free_img(t_mlx *mlx, t_img *img)
 	size_t	i;
 
 	i = 0;
-	while (i < 10)
+	while (i <= 10)
 	{
-		// (void)mlx;
-		// (void)img;
 		if (i <= 3)
 			mlx_destroy_image(mlx->mlx_id, img->ui_health[i]);
 		if (i <= 4)
