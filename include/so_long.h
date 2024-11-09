@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:53:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 19:07:13 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:25:29 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void		ft_msg_put_exrror(char *msg_error);
 void		free_struct_mlx(t_mlx *mlx);
 void		free_struct_map(t_map *map);
 void		free_struct_img(t_mlx *mlx, t_img *img);
+void		ft_msg_error_exit_user(char *msg_error, t_mlx *mlx);
 
 /*******************************/
 /*          MSG ERROR          */

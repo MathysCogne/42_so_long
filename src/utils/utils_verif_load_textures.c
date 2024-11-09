@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:11:00 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 06:28:33 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:21:28 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ static short	verif_load_texture_ui(t_img *img)
 
 short	verif_load_texture(t_mlx *mlx)
 {
+	if (!mlx || !mlx->img)
+		return (1);
 	if (verif_load_texture_map(mlx->img))
 		return (1);
 	if (verif_load_texture_player_monsters(mlx->img))
