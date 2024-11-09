@@ -80,6 +80,9 @@ $(NAME): $(OBJ) $(LIBFT)
 	$(V)$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(BONUS_OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
 	$(V)echo $(GREEN)"[$(NAME)] Executable created ✅"$(RESET)
 
+bonus: $(NAME)
+	$(V)echo $(GREEN)"[$(NAME)] Executable with bonus created 🥳"$(RESET)
+
 # Libft
 $(LIBFT):
 	$(V)echo '[$(NAME)] Downloading Libft from github.com...'$(RESET)
@@ -98,7 +101,7 @@ $(MINILIBX_DIR):
 
 # Clean Rules
 clean:
-	$(V)echo $(RED)'[$(NAME)] Cleaning objects'd$(RESET)
+	$(V)echo $(RED)'[$(NAME)] Cleaning objects'$(RESET)
 	$(V)rm -rf $(OBJDIR)
 
 fclean: clean
