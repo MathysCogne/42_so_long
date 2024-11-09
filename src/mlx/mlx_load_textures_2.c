@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 13:01:19 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 14:30:51 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:52:22 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ short	ft_mlx_load_texture_digits_ui(t_mlx *mlx, t_img *img)
 			IMG_UI_DIGIT_3, &img->width, &img->width);
 	img->ui_digits[4] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_UI_DIGIT_4, &img->width, &img->width);
+			
 	img->ui_digits[5] = mlx_xpm_file_to_image(mlx->mlx_id,
 			IMG_UI_DIGIT_5, &img->width, &img->width);
 	img->ui_digits[6] = mlx_xpm_file_to_image(mlx->mlx_id,

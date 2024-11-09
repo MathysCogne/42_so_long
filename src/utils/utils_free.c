@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:05:57 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/03 20:38:12 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 19:12:01 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	free_img(t_mlx *mlx, t_img *img)
 
 void	free_struct_img(t_mlx *mlx, t_img *img)
 {
-	mlx_destroy_image(mlx->mlx_id, img->player_dead);
+	mlx_destroy_image(mlx->mlx_id, img->player_dead); // TODO NE PAS FREE SI LA TEXTURES NEST PAS LOAD
 	mlx_destroy_image(mlx->mlx_id, img->item);
 	mlx_destroy_image(mlx->mlx_id, img->wall);
 	mlx_destroy_image(mlx->mlx_id, img->exit_close);

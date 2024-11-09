@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 02:12:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/03 19:36:41 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 19:06:46 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*map_read(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		ft_msg_put_exrror("Can't open file");
+		return (NULL);
 	map_txt = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
