@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 03:35:41 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 05:53:05 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:43:01 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ short	map_valid_char(t_map *map)
 	i = 0;
 	while (map->txt[i])
 	{
-
-		if (map->txt[i] != '0' && map->txt[i] != '1' && map->txt[i]!= 'C'
-					&& map->txt[i] != 'M' && map->txt[i] != 'E'
-					&& map->txt[i] != 'P' && map->txt[i] != '\n')
+		if (map->txt[i] != '0' && map->txt[i] != '1' && map->txt[i] != 'C'
+			&& map->txt[i] != 'M' && map->txt[i] != 'E'
+			&& map->txt[i] != 'P' && map->txt[i] != '\n')
 			return (1);
 		i++;
 	}

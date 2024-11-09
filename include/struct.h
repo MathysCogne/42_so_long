@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:44:17 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 15:04:58 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:45:46 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char		*txt;
 	size_t		col;
@@ -65,11 +65,12 @@ typedef struct s_mlx
 	t_img	*img;
 }			t_mlx;
 
-typedef struct	s_monster {
+typedef struct s_monster
+{
 	size_t	id;
 	size_t	pos;
 	size_t	col;
 	size_t	row;
-} 		t_monster;
+}			t_monster;
 
 #endif

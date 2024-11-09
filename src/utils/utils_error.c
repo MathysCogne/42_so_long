@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:34:55 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 20:33:21 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:38:23 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	ft_msg_error_textures(char *msg_error, t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx_id, mlx->window);
-
 	mlx_loop_end(mlx->mlx_id);
 	mlx_destroy_display(mlx->mlx_id);
 	free_struct_mlx(mlx);
-
 	ft_putstr_fd("Error.\n", 0);
 	ft_putstr_fd(msg_error, 0);
 	ft_putstr_fd("\n", 0);
@@ -34,7 +32,6 @@ void	ft_msg_error_exit_user(char *msg_error, t_mlx *mlx)
 	mlx_destroy_display(mlx->mlx_id);
 	free_struct_map(mlx->map);
 	free_struct_mlx(mlx);
-
 	ft_putstr_fd("Error.\n", 0);
 	ft_putstr_fd(msg_error, 0);
 	ft_putstr_fd("\n", 0);

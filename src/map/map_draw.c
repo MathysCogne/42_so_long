@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:07:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 13:36:04 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:39:29 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void	map_draw_ext_wall(t_mlx *mlx, t_map *map, t_img *img)
 	while (pos < map->row)
 	{
 		ft_mlx_put_image_to_window(mlx, img->wall_ext[3], pos * map->col);
-		ft_mlx_put_image_to_window(mlx, img->wall_ext[2], pos * map->col + last_col);
+		ft_mlx_put_image_to_window(mlx, img->wall_ext[2],
+			pos * map->col + last_col);
 		pos++;
 	}
 	ft_mlx_put_image_to_window(mlx, img->wall_ext[4], 0);

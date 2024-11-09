@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 06:11:00 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 20:21:28 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:37:59 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static short	verif_load_texture_map(t_img *img)
 		i++;
 	}
 	if (!img->player_dead || !img->item || !img->wall
-			|| !img->exit_close || !img->exit_open)
+		|| !img->exit_close || !img->exit_open)
 		return (1);
 	return (0);
 }
@@ -76,7 +76,7 @@ static short	verif_load_texture_ui(t_img *img)
 		i++;
 	}
 	if (!img->ui_item || !img->ui_banner_turn[0]
-			|| !img->ui_banner_turn[1])
+		|| !img->ui_banner_turn[1])
 		return (1);
 	return (0);
 }

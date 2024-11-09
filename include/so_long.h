@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:53:11 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 20:25:29 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:44:56 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ short		so_long(char *path);
 short		ft_mlx_start(t_map **map, t_mlx **mlx);
 short		ft_mlx_setup_hook(t_mlx *mlx);
 int			ft_mlx_close_window(t_mlx *mlx);
-int			ft_mlx_keypress(int	keycode, t_mlx *mlx);
+int			ft_mlx_keypress(int keycode, t_mlx *mlx);
 short		ft_mlx_render(t_map *map, t_mlx *mlx, t_img *img);
 short		ft_mlx_load_texture(t_mlx *mlx, t_img *img);
 short		ft_mlx_load_texture_digits_ui(t_mlx *mlx, t_img *img);
@@ -134,7 +134,7 @@ void		ft_msg_error_exit_user(char *msg_error, t_mlx *mlx);
 # define ERROR_MSG_MAP_RECTANGULAR	"Map: Map is not rectangular."
 # define ERROR_MSG_MAP_CLOSED_WALL	"Map: Map is not closed by walls :0"
 # define ERROR_MSG_MAP_VALID_PATH	"Map: Nothing path valid, is not fun!"
-# define ERROR_MSG_STRUCTURE		"Initialization: Problem in lading structure"
+# define ERROR_MSG_STRUCTURE	"Initialization: Problem in loading structure"
 # define ERROR_MSG_MLX_WIN			"MLX: Window is break !"
 # define ERROR_MSG_STRUCTURE_LOAD	"MLX: Problem in Loading textures"
 # define ERROR_MSG_MLX_LOOP			"MLX: Problem in Main loop of MLX"

@@ -6,13 +6,14 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 04:56:09 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:39:27 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:43:40 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static size_t	foodfill(char *tmp_map, size_t col, size_t start_pos, size_t goal_pos)
+static size_t	foodfill(char *tmp_map, size_t col,
+	size_t start_pos, size_t goal_pos)
 {
 	size_t	count;
 
@@ -42,9 +43,7 @@ short	map_valid_path(t_map *map)
 	if (!tmp_map)
 		return (1);
 	ft_strlcpy(tmp_map, map->txt, len + 1);
-
 	item = foodfill(tmp_map, map->col, map->pos_player[0], map->pos_exit[0]);
-
 	free(tmp_map);
 	if (item == map->count_item + 1)
 		return (0);

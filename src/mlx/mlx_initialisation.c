@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 17:24:54 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 20:28:42 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:36:49 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ short	ft_mlx_new_win(t_mlx *mlx, size_t width, size_t height)
 		free_struct_map(mlx->map);
 		free(mlx->img);
 		free(mlx);
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
-	mlx->window = mlx_new_window(mlx->mlx_id, (int)width, (int)height, "So_Long");
+	mlx->window = mlx_new_window(mlx->mlx_id,
+			(int)width, (int)height, "So_Long");
 	if (!mlx->window)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:21:05 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 07:09:41 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:35:59 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	event_anim_animspeed(t_mlx *mlx)
 	if (mlx->map->health_player <= 0)
 	{
 		ft_mlx_put_image_to_window(mlx, mlx->img->player_dead,
-				*mlx->map->pos_player);
+			*mlx->map->pos_player);
 		*mlx->map->pos_player = mlx->map->col * mlx->map->row;
 		anim_game_over(mlx);
 	}

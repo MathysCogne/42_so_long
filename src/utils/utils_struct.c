@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 23:21:28 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/10/31 12:55:06 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:39:01 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,3 @@ t_monster	*initialize_monsters(t_map *map)
 	}
 	return (monsters);
 }
-
-
