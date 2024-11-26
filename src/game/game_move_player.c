@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 05:00:35 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/09 20:37:25 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:23:52 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Moves the player.
-** 
+**
 ** - Validate new position (no walls/doors).
 ** - Update player's position on map.
 ** - Call events after movement.
@@ -46,7 +46,7 @@ static void	is_turn_monsters(t_mlx *mlx)
 	if (!turn_player)
 		turn_player = 0;
 	turn_player++;
-	if (turn_player == mlx->map->health_player + 1
+	if (turn_player >= mlx->map->health_player + 1
 		&& mlx->map->count_monster != 0)
 	{
 		mlx->is_player_turn = 0;
@@ -71,8 +71,8 @@ short	move_player(t_mlx *mlx, int to_col, int to_row)
 	if (new_col < mlx->map->col && new_row < mlx->map->row
 		&& !is_wall_pos_or_door_close((*mlx).map, new_col, new_row))
 	{
-		map_randomize_patern_void(mlx, mlx->img,
-			col * IMG_WIDTH, row * IMG_WIDTH);
+		map_randomize_patern_void(mlx, mlx->img, col * IMG_WIDTH, row
+			* IMG_WIDTH);
 		*mlx->map->pos_player = new_row * mlx->map->col + new_col;
 		mlx_put_image_to_window(mlx->mlx_id, mlx->window, mlx->img->player[0],
 			new_col * IMG_WIDTH, new_row * IMG_WIDTH);

@@ -6,7 +6,7 @@
 /*   By: mcogne-- <mcogne--@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 01:34:15 by mcogne--          #+#    #+#             */
-/*   Updated: 2024/11/01 06:35:02 by mcogne--         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:51:41 by mcogne--         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_abs(int nb)
 	return (nb);
 }
 
-size_t	generate_random_nb(size_t index)
+size_t	generate_pseudo_random_nb(size_t index)
 {
 	size_t	seed;
 
@@ -34,7 +34,7 @@ size_t	random_index_0_5(size_t index)
 
 	index *= 1103515245;
 	index /= 4;
-	random_nb = generate_random_nb(index) % 100;
+	random_nb = generate_pseudo_random_nb(index) % 100;
 	if (random_nb < 1)
 		return (2);
 	if (random_nb < 2)
